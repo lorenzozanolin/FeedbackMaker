@@ -1,3 +1,10 @@
+#mancano
+    # input per l'utente che gli chiede il mese
+    # input per l'utente che seleziona il giorno
+    # ratings
+    # genera il commento
+    
+
 from docx2python import docx2python
 
 def flatten(lista): #used to flat the result from the parsed word file
@@ -37,11 +44,6 @@ def cleanPlan(fullText : list) -> list:
     
     
     
-    
-    
-#if __name__ == "main.py":
-    # input per l'utente che gli chiede il mese
-#path = "/Users/lorenzozanolin/Library/Mobile Documents/com~apple~CloudDocs/Allenamento/Streetlifting/Mese 9/Lorenzo Zanolin #9.docx"
 path = "../Streetlifting/Mese 9/Lorenzo Zanolin #9.docx"
 plan = readPlan(path)
-print(plan[0])
+

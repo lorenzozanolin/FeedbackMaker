@@ -10,29 +10,28 @@ def flatten(lista): #used to flat the result from the parsed word file
         return [lista]
 
 
-def readPlan(path : str): #-> str:
+def readPlan(path : str) -> list:   #used to read from word file, parse it and create a list of lists, each one contains the program of a single day
     doc = docx2python(path)
     
     fullText = doc.body
     fullText = flatten(fullText)
     
-    #print(fullText)
     plan = cleanPlan(fullText)
-    print(plan)
+    return plan
     
 def cleanPlan(fullText : list) -> list:
     fullText.pop(0) #remove name
     fullText = [value for value in fullText if 'NEL WARM UP 'not in value]  #remove useless info
     fullText = fullText[:fullText.index("CIRCUITO ADDOME")-1] #remove abs and the remainders
-    program = '\n'.join(fullText) 
-    program = program.split("GIORNO")
-    program.pop(0)
+    program = '\n'.join(fullText) #create from the list a single string
+    program = program.split("GIORNO")   #recreate a list which element contains a single day
+    program.pop(0)  #remove the first element, useless
     
     days=[]
     for i in program:
-        day=''.join(i).split("\n--\t")
-        day = [d.replace("\n","") for d in day ]
-        days.append(day)
+        day=''.join(i).split("\n--\t")  #first create a single string from all the elements of the day, then split each day by the exercise (--t) and then create a new list
+        day = [d.replace("\n","") for d in day ]    #remove all newlines command 
+        days.append(day[1:])    #remove the number of the day, useless
     return days
     
     
@@ -44,5 +43,5 @@ def cleanPlan(fullText : list) -> list:
     # input per l'utente che gli chiede il mese
 #path = "/Users/lorenzozanolin/Library/Mobile Documents/com~apple~CloudDocs/Allenamento/Streetlifting/Mese 9/Lorenzo Zanolin #9.docx"
 path = "../Streetlifting/Mese 9/Lorenzo Zanolin #9.docx"
-#print(saveDays(readPlan(path=path))[0])
-readPlan(path)
+plan = readPlan(path)
+print(plan[0])

@@ -39,6 +39,7 @@ def cleanPlan(fullText : list) -> list:
     
     
     
+    
 #if __name__ == "main.py":
     # input per l'utente che gli chiede il mese
 #path = "/Users/lorenzozanolin/Library/Mobile Documents/com~apple~CloudDocs/Allenamento/Streetlifting/Mese 9/Lorenzo Zanolin #9.docx"

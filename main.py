@@ -16,7 +16,6 @@ def flatten(lista): #used to flat the result from the parsed word file
     else:
         return [lista]
 
-
 def readPlan(path : str) -> list:   #used to read from word file, parse it and create a list of lists, each one contains the program of a single day
     doc = docx2python(path)
     

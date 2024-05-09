@@ -44,7 +44,24 @@ def printPlan(plan : list):
     for i,p in enumerate(plan):
         print("\nGiorno "+str(i+1)+"\n")
         print(*p,sep="\n")
-    
+        
+def takeFeedback(plan:list,day:int) -> str:
+    txtFdbk = ""
+    for i in range(len(plan)):
+        print("E: "+plan[day][i]+"\n")
+        print("Difficoltà ? (1-5)")
+        diff=input()
+        print("Kg nel video ?")
+        kg=input()
+        print("Feedback ?")
+        fd = input()
+        if (kg):
+            txtFdbk += "E: "+plan[day][i]+"\n"+"Difficoltà (1-5): "+diff+"\n"+"Kg nel video: "+kg+"\n"+"Feedback: "+fd+"\n"
+        else:
+            txtFdbk += "E: "+plan[day][i]+"\n"+"Difficoltà (1-5): "+diff+"\n"+"Feedback: "+fd+"\n"
+        print("\n")
+    return txtFdbk
+
 print("Mese?")
 month=input()
 path = "../Streetlifting/Mese "+str(month)+"/Lorenzo Zanolin #"+str(month)+".docx"
@@ -52,4 +69,4 @@ plan = readPlan(path)
 printPlan(plan)
 print("\nGiorno?")
 day=int(input())-1
-print(plan[day])
+takeFeedback(plan,day)

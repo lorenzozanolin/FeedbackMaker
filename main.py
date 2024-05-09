@@ -60,13 +60,18 @@ def takeFeedback(plan:list,day:int) -> str:
         else:
             txtFdbk += "E: "+plan[day][i]+"\n"+"Difficoltà (1-5): "+diff+"\n"+"Feedback: "+fd+"\n"
         print("\n")
+        txtFdbk += "\n\n"
     return txtFdbk
 
-print("Mese?")
-month=input()
-path = "../Streetlifting/Mese "+str(month)+"/Lorenzo Zanolin #"+str(month)+".docx"
-plan = readPlan(path)
-printPlan(plan)
-print("\nGiorno?")
-day=int(input())-1
-takeFeedback(plan,day)
+def main():
+    print("Mese?")
+    month=input()
+    path = "/Users/lorenzozanolin/Library/Mobile Documents/com~apple~CloudDocs/Allenamento/Streetlifting/Mese "+str(month)+"/Lorenzo Zanolin #"+str(month)+".docx"
+    plan = readPlan(path)
+    printPlan(plan)
+    print("\nGiorno?")
+    day=int(input())-1
+    with open("/Users/lorenzozanolin/"+"out.txt","w") as file:
+        file.write(takeFeedback(plan,day))
+
+main()

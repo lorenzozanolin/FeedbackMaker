@@ -7,7 +7,7 @@
 
 from docx2python import docx2python
 
-def flatten(lista): #used to flat the result from the parsed word file
+def flatten(lista : list) -> list: #used to flat the result from the parsed word file
     if isinstance(lista, list):
         if len(lista) == 1:
             return flatten(lista[0])
@@ -39,10 +39,17 @@ def cleanPlan(fullText : list) -> list:
         day = [d.replace("\n","") for d in day ]    #remove all newlines command 
         days.append(day[1:])    #remove the number of the day, useless
     return days
+  
+def printPlan(plan : list):
+    for i,p in enumerate(plan):
+        print("\nGiorno "+str(i+1)+"\n")
+        print(*p,sep="\n")
     
-    
-    
-    
-path = "../Streetlifting/Mese 9/Lorenzo Zanolin #9.docx"
+print("Mese?")
+month=input()
+path = "../Streetlifting/Mese "+str(month)+"/Lorenzo Zanolin #"+str(month)+".docx"
 plan = readPlan(path)
-
+printPlan(plan)
+print("\nGiorno?")
+day=int(input())-1
+print(plan[day])

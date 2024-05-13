@@ -47,7 +47,7 @@ def printPlan(plan : list):
         
 def takeFeedback(plan:list,day:int) -> str:
     txtFdbk = ""
-    for i in range(len(plan)):
+    for i in range(len(plan)+1):
         print("E: "+plan[day][i]+"\n")
         print("Difficoltà ? (1-5)")
         diff=input()
